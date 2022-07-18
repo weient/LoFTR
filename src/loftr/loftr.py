@@ -79,6 +79,8 @@ class LoFTR(nn.Module):
         #self.fine_matching(feat_f0_unfold, feat_f1_unfold, data)
         self.feat_course = feat_c0
         self.feat_fine = feat_f0_unfold
+        print("feat_c0: ", feat_c0)
+        print("feat_f0_unfold: ", feat_f0_unfold)
 
     def load_state_dict(self, state_dict, *args, **kwargs):
         for k in list(state_dict.keys()):
