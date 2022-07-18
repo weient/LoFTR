@@ -94,7 +94,8 @@ class LocalFeatureTransformer(nn.Module):
             if name == 'self':
                 feat0 = layer(feat0, feat0, mask0, mask0)
                 #feat1 = layer(feat1, feat1, mask1, mask1)
-            #elif name == 'cross':
+            elif name == 'cross':
+                feat0 = layer(feat0, feat0, mask0, mask0)
                 #feat0 = layer(feat0, feat1, mask0, mask1)
                 #feat1 = layer(feat1, feat0, mask1, mask0)
             else:
