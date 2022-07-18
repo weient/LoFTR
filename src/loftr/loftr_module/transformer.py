@@ -77,7 +77,9 @@ class LocalFeatureTransformer(nn.Module):
             if p.dim() > 1:
                 nn.init.xavier_uniform_(p)
 
-    def forward(self, feat0, feat1, mask0=None, mask1=None):
+    def forward(self, feat0, mask0=None):
+        #feat1, 
+        #, mask1=None
         """
         Args:
             feat0 (torch.Tensor): [N, L, C]
@@ -91,11 +93,12 @@ class LocalFeatureTransformer(nn.Module):
         for layer, name in zip(self.layers, self.layer_names):
             if name == 'self':
                 feat0 = layer(feat0, feat0, mask0, mask0)
-                feat1 = layer(feat1, feat1, mask1, mask1)
-            elif name == 'cross':
-                feat0 = layer(feat0, feat1, mask0, mask1)
-                feat1 = layer(feat1, feat0, mask1, mask0)
+                #feat1 = layer(feat1, feat1, mask1, mask1)
+            #elif name == 'cross':
+                #feat0 = layer(feat0, feat1, mask0, mask1)
+                #feat1 = layer(feat1, feat0, mask1, mask0)
             else:
                 raise KeyError
 
-        return feat0, feat1
+        return feat0
+        #, feat1
