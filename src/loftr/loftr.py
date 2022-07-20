@@ -59,7 +59,7 @@ class LoFTR(nn.Module):
             mask_c0 = data['mask0'].flatten(-2)
         feat_c0 = self.loftr_coarse(feat_c0, mask_c0)
         
-        # 3. generate feature
+        # 3. save image feature
         data.update(
             {'img_feature': feat_c0}
         )
