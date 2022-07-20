@@ -31,10 +31,10 @@ class FinePreprocess(nn.Module):
         stride = data['hw0_f'][0] // data['hw0_c'][0]
 
         data.update({'W': W})
-        #if data['b_ids'].shape[0] == 0:
-            #feat0 = torch.empty(0, self.W**2, self.d_model_f, device=feat_f0.device)
+        if data['b_ids'].shape[0] == 0:
+            feat0 = torch.empty(0, self.W**2, self.d_model_f, device=feat_f0.device)
             #feat1 = torch.empty(0, self.W**2, self.d_model_f, device=feat_f0.device)
-            #return feat0
+            return feat0
 
         # 1. unfold(crop) all local windows
         feat_f0_unfold = F.unfold(feat_f0, kernel_size=(W, W), stride=stride, padding=W//2)
